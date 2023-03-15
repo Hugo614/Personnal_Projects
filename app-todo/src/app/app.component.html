@@ -1,0 +1,34 @@
+<h1>Angular Todo List App</h1>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div>
+        <input type="text" name="title" id="title" ngModel>
+        <label for="title">Enter Task</label>
+      </div>
+</form>
+
+<ul *ngFor="let todo of todos">
+    <li *ngIf="!this.todo.isComplete">
+      <div>{{this.todo.title}}</div>
+
+      <div>
+
+          <button (click)="onComplete(this.todo.id)">check</button>
+
+          <div *ngIf="!todos?.length">
+          Your Todo List is Empty!
+          </div>
+
+          <h1 id="completed-tasks">Completed Tasks</h1>
+        
+          <ul *ngFor="let todo of todos">
+              <li *ngIf="this.todo.isComplete">
+              <div>
+              <div>{{this.todo.title}}</div>
+              <div>
+              <button (click)="onDelete(this.todo.id)">delete</button>
+              </div>
+              </div>
+              </li>
+          </ul>
+      </div>
